@@ -2,17 +2,35 @@
   Copied color to clipboard!
 </p>
 
-<form ng-submit="make_palettes()">
-  <div class="form-group">
-    <div class="input-group">
-      <div class="input-group-btn">
-        <button type="button" title="Randomize" data-toggle="tooltip" class="btn btn-default random-color-button" ng-click="randomize_source_color()">
-          <span class="glyphicon glyphicon-refresh"></span>
-        </button>
+<form ng-submit="make_palettes()" class="palette-generator-form form-horizontal">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-btn">
+            <button type="button" title="Randomize" data-toggle="tooltip" class="btn btn-default random-color-button" ng-click="randomize_source_color()">
+              <span class="glyphicon glyphicon-refresh"></span>
+            </button>
+          </div>
+          <input class="form-control" type="text" placeholder="Base color, e.g., #ff00ff" ng-model="options.source_color">
+          <div class="input-group-btn">
+            <button type="submit" class="btn btn-default">Make Palettes</button>
+          </div>
+        </div>
       </div>
-      <input class="form-control" type="text" placeholder="Base color, e.g., #ff00ff" ng-model="options.source_color">
-      <div class="input-group-btn">
-        <button type="submit" class="btn btn-default">Make Palettes</button>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="copy_format" class="control-label col-sm-4">Format:</label>
+        <div class="col-sm-8">
+          <select ng-model="options.copy_format" id="copy_format" class="form-control">
+            <option value="rgb">rgb(255, 0, 0)</option>
+            <option value="hex">ff0000</option>
+            <option value="hsv">hsv(0, 100%, 100%)</option>
+            <option value="hex8">ffff0000</option>
+            <option value="rgb-pct">rgb(100%, 0%, 0%)</option>
+          </select>
+        </div>
       </div>
     </div>
   </div>
@@ -22,10 +40,22 @@
   <li ng-repeat="palette in palettes" id="{{palette.scheme_type}}" class="animate palette">
     <h3 class="palette-scheme-type">{{palette.scheme_type}}</h3>
     <ul class="color-list list-inline">
-      <li ng-repeat="color in palette.colors" class="color" ng-style="{'background-color': 'rgb(' + color.r + ',' + color.g + ',' + color.b + ')', 'width': (100 / palette.colors.length) + '%'}" clip-copy="get_color_text(color)" clip-click="show_copied_message(color)">
-        <span class="r">{{color.r}}</span><span class="separator">,</span>
-        <span class="g">{{color.g}}</span><span class="separator">,</span>
-        <span class="b">{{color.b}}</span>
+      <li ng-repeat="color in palette.colors" class="color" ng-style="{'background-color': color.toRgbString(), 'width': (100 / palette.colors.length) + '%'}" clip-copy="get_color_text(color)" clip-click="show_copied_message(color)" ng-class="{dark: color.isDark(), light: color.isLight()}">
+        <span class="rgb-representation" ng-show="options.copy_format === 'rgb'">
+          {{color.toRgbString()}}
+        </span>
+        <span class="hex-representation" ng-show="options.copy_format === 'hex'">
+          {{color.toHex()}}
+        </span>
+        <span class="hsv-representation" ng-show="options.copy_format === 'hsv'">
+          {{color.toHsvString()}}
+        </span>
+        <span class="hex8-representation" ng-show="options.copy_format === 'hex8'">
+          {{color.toHex8()}}
+        </span>
+        <span class="rgb-pct-representation" ng-show="options.copy_format === 'rgb-pct'">
+          {{color.toPercentageRgbString()}}
+        </span>
       </li>
     </ul>
   </li>

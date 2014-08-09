@@ -59,13 +59,23 @@ body {
 }
 
 #copy-message {
-  position: absolute;
+  position: fixed;
   width: 20em;
   left: 50%;
+  top: 10px;
   margin-left: -10em;
   z-index: 3;
-  top: 10px;
   text-align: center;
+}
+
+.palette-generator-form {
+  &.form-horizontal {
+    .col-sm-8 {
+      .form-group {
+        margin-left: 0;
+      }
+    }
+  }
 }
 
 .palette-list {
@@ -80,9 +90,21 @@ body {
         height: 60px;
         line-height: 60px;
         text-align: center;
-        color: rgba(255, 255, 255, 0.8);
-        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
         cursor: pointer;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &.dark {
+          color: white;
+          color: rgba(255, 255, 255, 0.8);
+          text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+        }
+
+        &.light {
+          color: black;
+          color: rgba(0, 0, 0, 0.8);
+          text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+        }
       }
 
       &.list-inline {
