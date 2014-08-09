@@ -1,0 +1,22 @@
+<form ng-submit="make_palettes()">
+  <div class="form-group">
+    <div class="input-group">
+      <input class="form-control" type="text" placeholder="#ff00ff" ng-model="options.source_color">
+      <div class="input-group-btn">
+        <button type="submit" class="btn btn-primary">Make Palettes</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<ul class="palette-list list-unstyled">
+  <li ng-repeat="palette in palettes" class="palette">
+    <ul class="color-list list-inline">
+      <li ng-repeat="color in palette" class="color" ng-style="{'background-color': 'rgb(' + color.r + ',' + color.g + ',' + color.b + ')', 'width': (100 / palette.length) + '%'}">
+        <span class="r">{{color.r}}</span><span class="separator">,</span>
+        <span class="g">{{color.g}}</span><span class="separator">,</span>
+        <span class="b">{{color.b}}</span>
+      </li>
+    </ul>
+  </li>
+</ul>
