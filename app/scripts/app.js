@@ -18,7 +18,8 @@ var app = angular.module('paletteApp', [
     'ngSanitize',
     'ngTouch',
     'ngRoute',
-    'ngAnimate'
+    'ngAnimate',
+    'ngClipboard'
   ]);
 
 app.config(function ($routeProvider) {
@@ -28,3 +29,7 @@ app.config(function ($routeProvider) {
   });
   $routeProvider.otherwise({redirectTo: '/'});
 });
+
+app.config(['ngClipProvider', function(ngClipProvider) {
+  ngClipProvider.setPath('bower_components/zeroclipboard/dist/ZeroClipboard.swf');
+}]);

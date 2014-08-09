@@ -8,8 +8,9 @@
  * Controller of the paletteApp
  */
 angular.module('paletteApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
     $scope.options = {source_color: Please.make_color()};
+    $scope.toggle = {copy_message: false};
     $scope.palettes = [];
 
     $scope.make_palettes = function() {
@@ -33,5 +34,16 @@ angular.module('paletteApp')
       $scope.make_palettes();
     };
 
+    $scope.get_color_text = function(color) {
+      return 'rgb(' + color.r + ', ' + color.g + ', ' + color.b + ')';
+    };
+
+    $scope.show_copied_message = function(color) {
+      $scope.toggle.copy_message = true;
+      $timeout(function() {
+        $scope.toggle.copy_message = false;
+      }, 1500);
+    };
+
     $scope.make_palettes();
-  });
+  }]);

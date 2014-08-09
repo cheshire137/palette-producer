@@ -1,3 +1,7 @@
+<p id="copy-message" ng-show="toggle.copy_message" class="alert alert-success">
+  Copied color to clipboard!
+</p>
+
 <form ng-submit="make_palettes()">
   <div class="form-group">
     <div class="input-group">
@@ -18,7 +22,7 @@
   <li ng-repeat="palette in palettes" id="{{palette.scheme_type}}" class="animate palette">
     <h3 class="palette-scheme-type">{{palette.scheme_type}}</h3>
     <ul class="color-list list-inline">
-      <li ng-repeat="color in palette.colors" class="color" ng-style="{'background-color': 'rgb(' + color.r + ',' + color.g + ',' + color.b + ')', 'width': (100 / palette.colors.length) + '%'}">
+      <li ng-repeat="color in palette.colors" class="color" ng-style="{'background-color': 'rgb(' + color.r + ',' + color.g + ',' + color.b + ')', 'width': (100 / palette.colors.length) + '%'}" clip-copy="get_color_text(color)" clip-click="show_copied_message(color)">
         <span class="r">{{color.r}}</span><span class="separator">,</span>
         <span class="g">{{color.g}}</span><span class="separator">,</span>
         <span class="b">{{color.b}}</span>

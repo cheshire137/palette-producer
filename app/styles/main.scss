@@ -40,21 +40,39 @@ body {
 }
 
 .ng-hide-remove {
-  -webkit-animation: bounceIn 2.5s;
-  animation: bounceIn 2.5s;
+  -webkit-animation: fadeInDown 0.25s;
+  animation: fadeInDown 0.25s;
 }
 
 .ng-hide-add {
-  -webkit-animation: flipOutX 2.5s;
-  animation: flipOutX 2.5s;
+  -webkit-animation: fadeOutUp 0.25s;
+  animation: fadeOutUp 0.25s;
   display: block !important;
+}
+
+.page-header {
+  margin-top: 0;
+
+  h1 {
+    margin-top: 0;
+  }
+}
+
+#copy-message {
+  position: absolute;
+  width: 20em;
+  left: 50%;
+  margin-left: -10em;
+  z-index: 3;
+  top: 10px;
+  text-align: center;
 }
 
 .palette-list {
   .palette {
     &.animate.ng-enter {
-      -webkit-animation: pulse 0.5s;
-      animation: pulse 0.5s;
+      -webkit-animation: fadeIn 0.25s;
+      animation: fadeIn 0.25s;
     }
 
     .color-list {
@@ -64,6 +82,7 @@ body {
         text-align: center;
         color: rgba(255, 255, 255, 0.8);
         text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
       }
 
       &.list-inline {
