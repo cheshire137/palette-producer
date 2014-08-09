@@ -11,6 +11,7 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/animate.css">
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
@@ -21,13 +22,27 @@
 
     <!-- Add your site or application content here -->
     <div class="container">
-      <div class="header">
-        <h3 class="text-muted">Palette Producer</h3>
+      <div class="page-header">
+        <h1>Palette Producer</h1>
       </div>
 
       <div ng-view></div>
 
       <div class="footer">
+        <ul class="list-inline">
+          <li>
+            <a href="https://github.com/moneypenny/palette-producer">
+              View source
+            </a>
+          </li>
+          <li>Thanks:</li>
+          <li>
+            <a href="https://github.com/Fooidge/PleaseJS">PleaseJS</a>
+          </li>
+          <li>
+            <a href="https://github.com/bgrins/TinyColor">TinyColor</a>
+          </li>
+        </ul>
       </div>
     </div>
 
@@ -73,6 +88,7 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/tinycolor/tinycolor.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

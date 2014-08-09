@@ -16,40 +16,47 @@ body {
   padding-bottom: 20px;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-
-  /* Make the masthead heading the same height as the navigation */
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
-  }
-}
-
 /* Custom page footer */
 .footer {
-  padding-top: 19px;
+  padding-top: $line-height-computed;
   color: #777;
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid $hr-border;
+  font-size: $font-size-small;
+
+  a {
+    &, &:active, &:visited {
+      color: $gray;
+      text-decoration: underline;
+    }
+
+    &:hover, &:focus {
+      text-decoration: none;
+    }
+  }
 }
 
 .container-narrow > hr {
   margin: 30px 0;
 }
 
+.ng-hide-remove {
+  -webkit-animation: bounceIn 2.5s;
+  animation: bounceIn 2.5s;
+}
+
+.ng-hide-add {
+  -webkit-animation: flipOutX 2.5s;
+  animation: flipOutX 2.5s;
+  display: block !important;
+}
+
 .palette-list {
   .palette {
+    &.animate.ng-enter {
+      -webkit-animation: pulse 0.5s;
+      animation: pulse 0.5s;
+    }
+
     .color-list {
       .color {
         height: 60px;
@@ -71,28 +78,5 @@ body {
       text-transform: uppercase;
       letter-spacing: 1px;
     }
-  }
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
   }
 }

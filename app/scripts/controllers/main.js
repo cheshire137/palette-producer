@@ -23,9 +23,8 @@ angular.module('paletteApp')
         var colors = Please.make_scheme(base_color,
                                         {scheme_type: scheme_type,
                                          format: 'rgb'});
-        $scope.palettes.push(
-          {colors: colors, scheme_type: scheme_type}
-        );
+        var palette = {colors: colors, scheme_type: scheme_type};
+        $scope.palettes.push(palette);
       }
     };
 

@@ -11,7 +11,8 @@
     "angular-sanitize": "1.2.16",
     "angular-touch": "1.2.16",
     "angular-route": "~1.2.21",
-    "tinycolor": "~1.0.0"
+    "tinycolor": "~1.0.0",
+    "angular-animate": "~1.2.21"
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",

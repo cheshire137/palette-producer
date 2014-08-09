@@ -17,7 +17,8 @@ var app = angular.module('paletteApp', [
     'ngResource',
     'ngSanitize',
     'ngTouch',
-    'ngRoute'
+    'ngRoute',
+    'ngAnimate'
   ]);
 
 app.config(function ($routeProvider) {
