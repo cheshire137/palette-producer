@@ -33,3 +33,12 @@ app.config(function ($routeProvider) {
 app.config(['ngClipProvider', function(ngClipProvider) {
   ngClipProvider.setPath('bower_components/zeroclipboard/dist/ZeroClipboard.swf');
 }]);
+
+app.directive('selectOnClick', function () {
+  return {
+    restrict: 'A',
+    link: function (scope, element, attrs) {
+      element.on('click', function() { this.select(); });
+    }
+  };
+});
