@@ -1,5 +1,9 @@
 'use strict';
 
+$('body').tooltip({
+  selector: '[data-toggle="tooltip"]'
+});
+
 /**
  * @ngdoc overview
  * @name paletteApp

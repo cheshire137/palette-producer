@@ -1,9 +1,14 @@
 <form ng-submit="make_palettes()">
   <div class="form-group">
     <div class="input-group">
-      <input class="form-control" type="text" placeholder="#ff00ff" ng-model="options.source_color">
       <div class="input-group-btn">
-        <button type="submit" class="btn btn-primary">Make Palettes</button>
+        <button type="button" title="Randomize" data-toggle="tooltip" class="btn btn-default random-color-button" ng-click="randomize_source_color()">
+          <span class="glyphicon glyphicon-refresh"></span>
+        </button>
+      </div>
+      <input class="form-control" type="text" placeholder="Base color, e.g., #ff00ff" ng-model="options.source_color">
+      <div class="input-group-btn">
+        <button type="submit" class="btn btn-default">Make Palettes</button>
       </div>
     </div>
   </div>
@@ -11,8 +16,9 @@
 
 <ul class="palette-list list-unstyled">
   <li ng-repeat="palette in palettes" class="palette">
+    <h3 class="palette-scheme-type">{{palette.scheme_type}}</h3>
     <ul class="color-list list-inline">
-      <li ng-repeat="color in palette" class="color" ng-style="{'background-color': 'rgb(' + color.r + ',' + color.g + ',' + color.b + ')', 'width': (100 / palette.length) + '%'}">
+      <li ng-repeat="color in palette.colors" class="color" ng-style="{'background-color': 'rgb(' + color.r + ',' + color.g + ',' + color.b + ')', 'width': (100 / palette.colors.length) + '%'}">
         <span class="r">{{color.r}}</span><span class="separator">,</span>
         <span class="g">{{color.g}}</span><span class="separator">,</span>
         <span class="b">{{color.b}}</span>
