@@ -15,6 +15,8 @@ angular.module('paletteApp')
     };
 
     $scope.luminosities = ['bright', 'light', 'dark'];
+    $scope.hues = ['red', 'orange', 'yellow', 'green', 'blue', 'purple',
+                   'pink', 'monochrome'];
     $scope.options = {
       source_color: get_random_color().toHex(), luminosity: 'bright',
       copy_format: 'hex', generate: 'schemes', source_hue: 'red'
@@ -111,6 +113,7 @@ angular.module('paletteApp')
         $scope.options.source_color = $scope.get_color_text(color);
       } else {
         $scope.options.luminosity = $scope.luminosities[Math.floor(Math.random() * $scope.luminosities.length)];
+        $scope.options.source_hue = $scope.hues[Math.floor(Math.random() * $scope.hues.length)];
       }
     };
 

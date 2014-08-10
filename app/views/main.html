@@ -51,16 +51,7 @@
               <legend>Color Options</legend>
               <div class="form-group">
                 <label class="control-label" for="source_hue">Seed hue:</label>
-                <select id="source_hue" class="form-control input-sm" ng-model="options.source_hue">
-                  <option value="red">red</option>
-                  <option value="orange">orange</option>
-                  <option value="yellow">yellow</option>
-                  <option value="green">green</option>
-                  <option value="blue">blue</option>
-                  <option value="purple">purple</option>
-                  <option value="pink">pink</option>
-                  <option value="monochrome">monochrome</option>
-                </select>
+                <select id="source_hue" class="form-control input-sm" ng-model="options.source_hue" ng-options="val for val in hues"></select>
               </div>
               <div class="form-group">
                 <label class="control-label" for="luminosity">Luminosity:</label>
