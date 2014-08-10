@@ -21,6 +21,8 @@ angular.module('paletteApp')
       source_color: get_random_color().toHex(), luminosity: 'bright',
       copy_format: 'hex', generate: 'schemes', source_hue: 'red'
     };
+    $scope.active_swatch = {index: undefined};
+    $scope.selected_colors = [];
     $scope.toggle = {copy_message: false};
     $scope.scheme_types = ['analogous', 'monochromatic', 'complementary',
                            'split-complementary', 'double-complementary',
@@ -163,5 +165,29 @@ angular.module('paletteApp')
       $timeout(function() {
         $scope.toggle.copy_message = false;
       }, 1500);
+    };
+
+    var toggle_selected_color = function(color) {
+      var index = -1;
+      var color_hex = color.toHex();
+      for (var i=0; i<$scope.selected_colors.length; i++) {
+        if ($scope.selected_colors[i].toHex() === color_hex) {
+          index = i;
+        }
+      }
+      if (index > -1) {
+        $scope.selected_colors.splice(index, 1);
+      } else {
+        $scope.selected_colors.push(color);
+      }
+    };
+
+    $scope.toggle_and_copy_color = function(color) {
+      $scope.show_copied_message();
+      toggle_selected_color(color);
+    };
+
+    $scope.toggle_color = function(color) {
+      toggle_selected_color(color);
     };
   }]);

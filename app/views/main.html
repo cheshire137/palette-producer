@@ -78,6 +78,22 @@
   </div>
 </div>
 
+<div class="selected-colors-container" ng-show="selected_colors.length > 0">
+  <ul class="selected-colors-list list-inline">
+    <li>
+      Selected colors:
+    </li>
+    <li ng-repeat="color in selected_colors" class="selected-color">
+      <div class="color-swatch animate">
+        <a class="color-link" ng-click="toggle_color(color)" ng-style="{'background-color': color.toRgbString()}">
+          &nbsp;
+        </a>
+      </div>
+    </li>
+  </ul>
+  <hr>
+</div>
+
 <div class="palette-list row" ng-show="options.generate === 'schemes'">
   <div ng-repeat="palette in schemes" id="{{palette.scheme_type}}" class="palette col-xs-2">
     <h3 class="palette-scheme-type">
@@ -88,7 +104,7 @@
     </h3>
     <ul class="color-list list-unstyled" ng-style="{'height': get_color_list_height()}">
       <li ng-repeat="color in palette.colors" class="color animate" ng-style="{'height': (100 / palette.colors.length) + '%'}" ng-class="{dark: color.isDark(), light: color.isLight()}">
-        <a class="color-link" clip-copy="get_color_text(color)" clip-click="show_copied_message()" ng-style="{'background-color': color.toRgbString()}">
+        <a class="color-link" clip-copy="get_color_text(color)" clip-click="toggle_and_copy_color(color)" ng-style="{'background-color': color.toRgbString()}">
           <span class="color-text rgb-representation" ng-show="options.copy_format === 'rgb'">
             {{color.toRgbString()}}
           </span>
@@ -111,7 +127,9 @@
 </div>
 
 <div class="colors-list" ng-show="options.generate === 'colors'">
-  <a class="color-link animate" ng-repeat="color in colors" clip-copy="get_color_text(color)" clip-click="show_copied_message()" ng-style="{'background-color': color.toRgbString()}">
-    &nbsp;
-  </a>
+  <div class="color-swatch animate" ng-repeat="color in colors" ng-class="{'active': active_swatch.index === $index, 'selected': selected_colors.indexOf(color) > -1}" ng-mouseenter="active_swatch.index = $index" ng-mouseleave="active_swatch.index = undefined">
+    <a class="color-link" clip-copy="get_color_text(color)" clip-click="toggle_and_copy_color(color)" ng-style="{'background-color': color.toRgbString()}">
+      &nbsp;
+    </a>
+  </div>
 </div>
