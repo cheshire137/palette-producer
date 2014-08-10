@@ -29,6 +29,16 @@ body {
   padding-bottom: 20px;
 }
 
+.form-inline {
+  legend {
+    margin-bottom: 0;
+    font-size: $font-size-small;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-bottom: none;
+  }
+}
+
 /* Custom page footer */
 .footer {
   padding-top: $line-height-computed;
@@ -102,8 +112,25 @@ body {
 }
 
 .palette-generator-form {
+  .form-group:last-child {
+    display: inline-block;
+    vertical-align: bottom;
+  }
+
   .help-block {
     margin-bottom: 0;
+  }
+}
+
+.colors-list {
+  margin-bottom: $line-height-computed;
+
+  .color-link {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    margin: 5px;
   }
 }
 
@@ -242,6 +269,12 @@ body {
       .form-group {
         display: block;
         margin-bottom: 15px;
+      }
+
+      fieldset {
+        .form-group:last-child {
+          margin-bottom: 0;
+        }
       }
     }
   }

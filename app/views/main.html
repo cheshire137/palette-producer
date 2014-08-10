@@ -12,21 +12,65 @@
     </button>
   </div>
   <div class="collapse navbar-collapse">
-    <form ng-submit="make_palettes()" class="palette-generator-form form-inline">
+    <form ng-submit="generate_palettes()" class="palette-generator-form form-inline">
       <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-8 col-md-9">
           <div class="form-group">
-            <button type="button" title="Randomize" data-toggle="tooltip" class="btn btn-default random-color-button" ng-click="randomize_source_color()">
+            <button type="button" title="Randomize" data-toggle="tooltip" class="btn btn-default random-color-button" ng-click="randomize()">
               <span class="glyphicon glyphicon-refresh"></span>
             </button>
           </div>
           <div class="form-group">
-            <label for="source_color" class="control-label">Seed color:</label>
-            <input id="source_color" class="form-control" type="text" placeholder="#ff00ff" ng-model="options.source_color" select-on-click>
+            <fieldset>
+              <legend>Generate</legend>
+              <div class="radio">
+                <label>
+                  <input type="radio" ng-model="options.generate" value="schemes">
+                  Schemes
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" ng-model="options.generate" value="colors">
+                  Colors
+                </label>
+              </div>
+            </fieldset>
+          </div>
+          <div class="form-group" ng-show="options.generate === 'schemes'">
+            <fieldset>
+              <legend>Scheme Options</legend>
+              <div class="form-group">
+                <label for="source_color" class="control-label">Seed color:</label>
+                <input id="source_color" class="form-control input-sm" type="text" placeholder="#ff00ff" size="17" ng-model="options.source_color" select-on-click>
+              </div>
+            </fieldset>
+          </div>
+          <div class="form-group" ng-show="options.generate === 'colors'">
+            <fieldset>
+              <legend>Color Options</legend>
+              <div class="form-group">
+                <label class="control-label" for="source_hue">Seed hue:</label>
+                <select id="source_hue" class="form-control input-sm" ng-model="options.source_hue">
+                  <option value="red">red</option>
+                  <option value="orange">orange</option>
+                  <option value="yellow">yellow</option>
+                  <option value="green">green</option>
+                  <option value="blue">blue</option>
+                  <option value="purple">purple</option>
+                  <option value="pink">pink</option>
+                  <option value="monochrome">monochrome</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="luminosity">Luminosity:</label>
+                <select id="luminosity" class="form-control input-sm" ng-model="options.luminosity" ng-options="val for val in luminosities"></select>
+              </div>
+            </fieldset>
           </div>
           <div class="form-group">
             <label for="copy_format" class="control-label">Format:</label>
-            <select ng-model="options.copy_format" id="copy_format" class="form-control">
+            <select ng-model="options.copy_format" id="copy_format" class="form-control input-sm">
               <option value="rgb">rgb(255, 0, 0)</option>
               <option value="hex">ff0000</option>
               <option value="hsv">hsv(0, 100%, 100%)</option>
@@ -35,7 +79,7 @@
             </select>
           </div>
         </div>
-        <div class="col-sm-4 text-right-sm">
+        <div class="col-sm-4 col-md-3 text-right-sm">
           <p class="help-block">Hint: click a color to copy it</p>
         </div>
       </div>
@@ -43,7 +87,7 @@
   </div>
 </div>
 
-<div class="palette-list row">
+<div class="palette-list row" ng-show="options.generate === 'schemes'">
   <div ng-repeat="palette in palettes" id="{{palette.scheme_type}}" class="animate palette col-xs-2">
     <h3 class="palette-scheme-type">
       <a ng-href="http://www.colourlovers.com/palettes/add?colors={{palette.color_hex_list}}" title="Share on ColourLovers" target="_blank" data-toggle="tooltip" class="create-palette-link">
@@ -73,4 +117,10 @@
       </li>
     </ul>
   </div>
+</div>
+
+<div class="colors-list" ng-show="options.generate === 'colors'">
+  <a class="color-link" ng-repeat="color in colors" clip-copy="get_color_text(color)" clip-click="show_copied_message()" ng-style="{'background-color': color.toRgbString()}">
+    &nbsp;
+  </a>
 </div>
