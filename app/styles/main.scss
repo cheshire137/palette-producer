@@ -101,6 +101,30 @@ body {
         white-space: nowrap;
         display: block;
 
+        .color-text {
+          display: inline-block;
+          vertical-align: middle;
+          height: 100%;
+
+          &:before {
+            content: '';
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            margin-right: -0.25em;
+          }
+        }
+
+        &:first-child {
+          border-top-left-radius: $border-radius-base;
+          border-top-right-radius: $border-radius-base;
+        }
+
+        &:last-child {
+          border-bottom-left-radius: $border-radius-base;
+          border-bottom-right-radius: $border-radius-base;
+        }
+
         &.dark {
           color: white;
           color: rgba(255, 255, 255, 0.8);
