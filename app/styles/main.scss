@@ -152,8 +152,18 @@ body {
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
+
+      .create-palette-link {
+        float: right;
+      }
     }
   }
+}
+
+.tooltip {
+  text-transform: none;
+  font-weight: 400;
+  letter-spacing: 0;
 }
 
 @media screen and (max-width: $screen-md) {

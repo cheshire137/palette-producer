@@ -40,11 +40,15 @@ angular.module('paletteApp')
         var colors = Please.make_scheme(base_color,
                                         {scheme_type: scheme_type,
                                          format: 'hex'});
+        var color_hex_list = [];
         for (var j=0; j<colors.length; j++) {
           colors[j] = tinycolor(colors[j]);
+          color_hex_list.push(colors[j].toHex());
         }
+        color_hex_list = color_hex_list.join(',');
         var palette = {colors: colors, scheme_type: scheme_type,
-                       label: labels[scheme_type]};
+                       label: labels[scheme_type],
+                       color_hex_list: color_hex_list};
         $scope.palettes.push(palette);
       }
     };
