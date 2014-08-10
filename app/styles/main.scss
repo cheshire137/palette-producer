@@ -89,16 +89,18 @@ body {
   }
 }
 
-// .ng-hide-remove {
-//   -webkit-animation: fadeInDown 0.25s;
-//   animation: fadeInDown 0.25s;
-// }
+.alert {
+  &.ng-hide-remove {
+    -webkit-animation: fadeInDown 0.25s;
+    animation: fadeInDown 0.25s;
+  }
 
-// .ng-hide-add {
-//   -webkit-animation: fadeOutUp 0.25s;
-//   animation: fadeOutUp 0.25s;
-//   display: block !important;
-// }
+  &.ng-hide-add {
+    -webkit-animation: fadeOutUp 0.25s;
+    animation: fadeOutUp 0.25s;
+    display: block !important;
+  }
+}
 
 .page-header {
   margin-top: 0;
