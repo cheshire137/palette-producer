@@ -3,6 +3,14 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
 // endbower
 
+a {
+  -webkit-transition: color 0.25s ease-in-out;
+  -moz-transition: color 0.25s ease-in-out;
+  -ms-transition: color 0.25s ease-in-out;
+  -o-transition: color 0.25s ease-in-out;
+  transition: color 0.25s ease-in-out;
+}
+
 html, body {
   min-height: 100%;
   height: 100%;
@@ -146,15 +154,23 @@ body {
     .palette-scheme-type {
       font-size: $font-size-small;
       font-weight: 700;
-      color: #959595;
       text-transform: uppercase;
       letter-spacing: 1px;
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
 
+      &, .create-palette-link {
+        color: #959595;
+      }
+
       .create-palette-link {
         float: right;
+
+        &:hover, &:focus {
+          text-decoration: none;
+          color: darken(#959595, 10%);
+        }
       }
     }
   }
