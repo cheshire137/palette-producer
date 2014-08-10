@@ -85,7 +85,7 @@ angular.module('paletteApp')
       return color.toPercentageRgbString();
     };
 
-    $scope.show_copied_message = function(color) {
+    $scope.show_copied_message = function() {
       $scope.toggle.copy_message = true;
       $timeout(function() {
         $scope.toggle.copy_message = false;

@@ -28,7 +28,7 @@
   <div ng-repeat="palette in palettes" id="{{palette.scheme_type}}" class="animate palette col-xs-2">
     <h3 class="palette-scheme-type">{{palette.label}}</h3>
     <ul class="color-list list-unstyled" ng-style="{'height': get_color_list_height()}">
-      <li ng-repeat="color in palette.colors" class="color" ng-style="{'background-color': color.toRgbString(), 'height': (100 / palette.colors.length) + '%'}" clip-copy="get_color_text(color)" clip-click="show_copied_message(color)" ng-class="{dark: color.isDark(), light: color.isLight()}">
+      <li ng-repeat="color in palette.colors" class="color" ng-style="{'background-color': color.toRgbString(), 'height': (100 / palette.colors.length) + '%'}" clip-copy="get_color_text(color)" clip-click="show_copied_message()" ng-class="{dark: color.isDark(), light: color.isLight()}">
         <span class="color-text rgb-representation" ng-show="options.copy_format === 'rgb'">
           {{color.toRgbString()}}
         </span>
