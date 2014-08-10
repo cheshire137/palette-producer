@@ -9,8 +9,13 @@
  */
 angular.module('paletteApp')
   .controller('MainCtrl', ['$scope', '$timeout', '$window', function ($scope, $timeout, $window) {
+    var get_random_color = function() {
+      var colors = [randomColor(), Please.make_color()];
+      return tinycolor(colors[Math.floor(Math.random() * colors.length)]);
+    };
+
     $scope.options = {
-      source_color: tinycolor(Please.make_color()).toHex(),
+      source_color: get_random_color().toHex(),
       copy_format: 'hex'
     };
     $scope.toggle = {copy_message: false};
@@ -59,7 +64,7 @@ angular.module('paletteApp')
     });
 
     $scope.randomize_source_color = function() {
-      var color = tinycolor(Please.make_color());
+      var color = get_random_color();
       $scope.options.source_color = $scope.get_color_text(color);
     };
 
