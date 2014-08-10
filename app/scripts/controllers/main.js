@@ -115,13 +115,29 @@ angular.module('paletteApp')
       });
     });
 
+    var randomize_schemes = function() {
+      var color = get_random_color();
+      $scope.options.source_color = $scope.get_color_text(color);
+    };
+
+    var randomize_colors = function() {
+      var cur_luminosity = $scope.options.luminosity;
+      var new_luminosity = cur_luminosity;
+      var cur_hue = $scope.options.source_hue;
+      var new_hue = cur_hue;
+      while (new_luminosity === cur_luminosity && new_hue === cur_hue) {
+        new_luminosity = $scope.luminosities[Math.floor(Math.random() * $scope.luminosities.length)];
+        new_hue = $scope.hues[Math.floor(Math.random() * $scope.hues.length)];
+      }
+      $scope.options.luminosity = new_luminosity;
+      $scope.options.source_hue = new_hue;
+    };
+
     $scope.randomize = function() {
       if ($scope.options.generate === 'schemes') {
-        var color = get_random_color();
-        $scope.options.source_color = $scope.get_color_text(color);
+        randomize_schemes();
       } else {
-        $scope.options.luminosity = $scope.luminosities[Math.floor(Math.random() * $scope.luminosities.length)];
-        $scope.options.source_hue = $scope.hues[Math.floor(Math.random() * $scope.hues.length)];
+        randomize_colors();
       }
     };
 
