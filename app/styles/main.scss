@@ -127,8 +127,6 @@ body {
 }
 
 .colors-list, .selected-colors-list {
-  margin-bottom: $line-height-computed;
-
   .color-swatch {
     display: inline-block;
     margin: 5px;
@@ -155,6 +153,8 @@ body {
 }
 
 .colors-list {
+  margin-bottom: $line-height-computed;
+
   // &.ng-hide-add {
   //   -webkit-animation: fadeInUp 0.5s;
   //   animation: fadeInUp 0.5s;
@@ -198,9 +198,19 @@ body {
   }
 }
 
-.selected-colors-list {
-  li {
-    line-height: 25px;
+.selected-colors-container {
+  margin-top: ($line-height-computed / 2);
+
+  hr {
+    margin-top: ($line-height-computed / 2);
+  }
+
+  .list-inline {
+    margin-bottom: 0;
+
+    li {
+      line-height: 25px;
+    }
   }
 }
 
@@ -363,6 +373,10 @@ body {
 @media screen and (max-width: $screen-md) {
   .color-text {
     display: none;
+  }
+
+  .selected-colors-container {
+    margin-top: 0;
   }
 
   .palette-generator-form {

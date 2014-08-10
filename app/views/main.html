@@ -75,23 +75,39 @@
         </div>
       </div>
     </form>
-  </div>
-</div>
 
-<div class="selected-colors-container" ng-show="selected_colors.length > 0">
-  <ul class="selected-colors-list list-inline">
-    <li>
-      Selected colors:
-    </li>
-    <li ng-repeat="color in selected_colors" class="selected-color">
-      <div class="color-swatch animate">
-        <a class="color-link" ng-click="toggle_color(color)" ng-style="{'background-color': color.toRgbString()}">
-          &nbsp;
-        </a>
+    <div class="selected-colors-container" ng-show="selected_colors.length > 0">
+      <div class="row">
+        <div class="col-sm-8">
+          <ul class="selected-colors-list list-inline">
+            <li>
+              Selected colors:
+            </li>
+            <li ng-repeat="color in selected_colors" class="selected-color">
+              <div class="color-swatch animate">
+                <a class="color-link" ng-click="toggle_color(color)" ng-style="{'background-color': color.toRgbString()}">
+                  &nbsp;
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-4 text-right-sm">
+          <ul class="list-inline">
+            <li>
+              With selected:
+            </li>
+            <li>
+              <a ng-href="http://www.colourlovers.com/palettes/add?colors={{selected_colors_hex_list}}" title="Share on ColourLovers" target="_blank" data-toggle="tooltip" class="create-palette-link" data-placement="left">
+                <span class="glyphicon glyphicon-share"></span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </li>
-  </ul>
-  <hr>
+      <hr>
+    </div>
+  </div>
 </div>
 
 <div class="palette-list row" ng-show="options.generate === 'schemes'">

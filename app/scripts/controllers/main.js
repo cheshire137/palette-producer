@@ -107,6 +107,14 @@ angular.module('paletteApp')
       $scope.make_colors();
     });
 
+    $scope.$watch('selected_colors.length', function() {
+      var list = [];
+      for (var i=0; i<$scope.selected_colors.length; i++) {
+        list.push($scope.selected_colors[i].toHex());
+      }
+      $scope.selected_colors_hex_list = list.join(',');
+    });
+
     $scope.get_color_list_height = function() {
       return ($(window).height() - $('.color-list').offset().top - $('.footer').outerHeight() - 20) + 'px';
     };
