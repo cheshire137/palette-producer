@@ -5,7 +5,6 @@
   "dependencies": {
     "express": "^4.8.2",
     "express-logger": "0.0.3",
-    "grunt-cli": "^0.1.13",
     "gzippo": "^0.2.0"
   },
   "devDependencies": {
@@ -42,7 +41,6 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "grunt test",
-    "postinstall": "./node_modules/grunt-cli/bin/grunt build"
+    "test": "grunt test"
   }
 }
