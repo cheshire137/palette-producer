@@ -8,7 +8,7 @@
  * Controller of the paletteApp
  */
 angular.module('paletteApp')
-  .controller('MainCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
+  .controller('MainCtrl', ['$scope', '$timeout', '$window', function ($scope, $timeout, $window) {
     $scope.options = {
       source_color: tinycolor(Please.make_color()).toHex(),
       copy_format: 'hex'
@@ -22,6 +22,14 @@ angular.module('paletteApp')
       var scheme_types = ['analogous', 'monochromatic', 'complementary',
                           'split-complementary', 'double-complementary',
                           'triadic'];
+      var labels = {
+        'analogous': 'Analogous',
+        'monochromatic': 'Monochromatic',
+        'complementary': 'Complement',
+        'split-complementary': 'Split Complement',
+        'double-complementary': 'Double Complement',
+        'triadic': 'Triadic'
+      };
       for (var i=0; i<scheme_types.length; i++) {
         var scheme_type = scheme_types[i];
         var colors = Please.make_scheme(base_color,
@@ -30,10 +38,21 @@ angular.module('paletteApp')
         for (var j=0; j<colors.length; j++) {
           colors[j] = tinycolor(colors[j]);
         }
-        var palette = {colors: colors, scheme_type: scheme_type};
+        var palette = {colors: colors, scheme_type: scheme_type,
+                       label: labels[scheme_type]};
         $scope.palettes.push(palette);
       }
     };
+
+    $scope.get_color_list_height = function() {
+      return ($(window).height() - $('.color-list').offset().top - $('.footer').outerHeight() - 20) + 'px';
+    };
+
+    angular.element($window).bind('resize', function() {
+      $('.color-list').each(function() {
+        $(this).css('height', $scope.get_color_list_height());
+      });
+    });
 
     $scope.randomize_source_color = function() {
       var color = tinycolor(Please.make_color());

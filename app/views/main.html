@@ -36,27 +36,27 @@
   </div>
 </form>
 
-<ul class="palette-list list-unstyled">
-  <li ng-repeat="palette in palettes" id="{{palette.scheme_type}}" class="animate palette">
-    <h3 class="palette-scheme-type">{{palette.scheme_type}}</h3>
-    <ul class="color-list list-inline">
-      <li ng-repeat="color in palette.colors" class="color" ng-style="{'background-color': color.toRgbString(), 'width': (100 / palette.colors.length) + '%'}" clip-copy="get_color_text(color)" clip-click="show_copied_message(color)" ng-class="{dark: color.isDark(), light: color.isLight()}">
-        <span class="rgb-representation" ng-show="options.copy_format === 'rgb'">
+<div class="palette-list row">
+  <div ng-repeat="palette in palettes" id="{{palette.scheme_type}}" class="animate palette col-xs-2">
+    <h3 class="palette-scheme-type">{{palette.label}}</h3>
+    <ul class="color-list list-unstyled" ng-style="{'height': get_color_list_height()}">
+      <li ng-repeat="color in palette.colors" class="color" ng-style="{'background-color': color.toRgbString(), 'height': (100 / palette.colors.length) + '%'}" clip-copy="get_color_text(color)" clip-click="show_copied_message(color)" ng-class="{dark: color.isDark(), light: color.isLight()}">
+        <span class="color-text rgb-representation" ng-show="options.copy_format === 'rgb'">
           {{color.toRgbString()}}
         </span>
-        <span class="hex-representation" ng-show="options.copy_format === 'hex'">
+        <span class="color-text hex-representation" ng-show="options.copy_format === 'hex'">
           {{color.toHex()}}
         </span>
-        <span class="hsv-representation" ng-show="options.copy_format === 'hsv'">
+        <span class="color-text hsv-representation" ng-show="options.copy_format === 'hsv'">
           {{color.toHsvString()}}
         </span>
-        <span class="hex8-representation" ng-show="options.copy_format === 'hex8'">
+        <span class="color-text hex8-representation" ng-show="options.copy_format === 'hex8'">
           {{color.toHex8()}}
         </span>
-        <span class="rgb-pct-representation" ng-show="options.copy_format === 'rgb-pct'">
+        <span class="color-text rgb-pct-representation" ng-show="options.copy_format === 'rgb-pct'">
           {{color.toPercentageRgbString()}}
         </span>
       </li>
     </ul>
-  </li>
-</ul>
+  </div>
+</div>
