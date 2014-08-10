@@ -29,10 +29,10 @@ angular.module('paletteApp')
                           'triadic'];
       var labels = {
         'analogous': 'Analogous',
-        'monochromatic': 'Monochromatic',
+        'monochromatic': 'Monochrome',
         'complementary': 'Complement',
-        'split-complementary': 'Split Complement',
-        'double-complementary': 'Double Complement',
+        'split-complementary': 'Split Comp.',
+        'double-complementary': 'Double Comp.',
         'triadic': 'Triadic'
       };
       for (var i=0; i<scheme_types.length; i++) {

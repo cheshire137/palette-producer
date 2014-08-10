@@ -52,6 +52,25 @@ body {
   margin: 30px 0;
 }
 
+.navbar {
+  &.navbar-default {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    margin-bottom: ($line-height-computed / 2);
+
+    .navbar-collapse {
+      padding-left: 0;
+      padding-right: 0;
+      border-color: transparent;
+
+      &.in {
+        overflow: hidden;
+      }
+    }
+  }
+}
+
 .ng-hide-remove {
   -webkit-animation: fadeInDown 0.25s;
   animation: fadeInDown 0.25s;
@@ -65,6 +84,7 @@ body {
 
 .page-header {
   margin-top: 0;
+  margin-bottom: ($line-height-computed / 2);
 
   h1 {
     margin-top: 0;
@@ -82,12 +102,8 @@ body {
 }
 
 .palette-generator-form {
-  &.form-inline {
-    .form-group {
-      & + .form-group {
-        margin-left: 20px;
-      }
-    }
+  .help-block {
+    margin-bottom: 0;
   }
 }
 
@@ -109,17 +125,23 @@ body {
         white-space: nowrap;
         display: block;
 
-        .color-text {
-          display: inline-block;
-          vertical-align: middle;
+        .color-link {
+          display: block;
+          text-decoration: none;
           height: 100%;
 
-          &:before {
-            content: '';
+          .color-text {
             display: inline-block;
-            height: 100%;
             vertical-align: middle;
-            margin-right: -0.25em;
+            height: 100%;
+
+            &:before {
+              content: '';
+              display: inline-block;
+              height: 100%;
+              vertical-align: middle;
+              margin-right: -0.25em;
+            }
           }
         }
 
@@ -134,15 +156,21 @@ body {
         }
 
         &.dark {
-          color: white;
-          color: rgba(255, 255, 255, 0.8);
           text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+
+          &, .color-link {
+            color: white;
+            color: rgba(255, 255, 255, 0.8);
+          }
         }
 
         &.light {
-          color: black;
-          color: rgba(0, 0, 0, 0.8);
           text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+
+          &, .color-link {
+            color: black;
+            color: rgba(0, 0, 0, 0.8);
+          }
         }
       }
 
@@ -155,21 +183,27 @@ body {
       font-size: $font-size-small;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      text-overflow: ellipsis;
       white-space: nowrap;
+      text-overflow: ellipsis;
       overflow: hidden;
+      margin-top: 0;
 
-      &, .create-palette-link {
+      span.type {
+        letter-spacing: 1px;
         color: #959595;
+        display: inline-block;
       }
 
       .create-palette-link {
         float: right;
 
+        &, &:link, &:active, &:visited {
+          color: darken(#959595, 10%);
+        }
+
         &:hover, &:focus {
           text-decoration: none;
-          color: darken(#959595, 10%);
+          color: darken(#959595, 20%);
         }
       }
     }
@@ -182,12 +216,71 @@ body {
   letter-spacing: 0;
 }
 
+@media screen and (min-width: $screen-md) {
+  .page-header {
+    margin-bottom: $line-height-computed;
+  }
+
+  .palette-generator-form {
+    &.form-inline {
+      .form-group {
+        & + .form-group {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+}
+
 @media screen and (max-width: $screen-md) {
   .color-text {
     display: none;
   }
 
+  .palette-generator-form {
+    &.form-inline {
+      .form-group {
+        display: block;
+        margin-bottom: 15px;
+      }
+    }
+  }
+
   .palette-scheme-type {
     display: none;
+  }
+}
+
+/* Defaults */
+.text-center-sm,
+.text-center-md,
+.text-center-lg,
+.text-right-sm,
+.text-right-md,
+.text-right-lg { text-align: inherit; }
+
+/* Define xs styles after defaults so they take precedence */
+.text-center-xs { text-align: center; }
+.text-right-xs { text-align: right; }
+
+/* Small grid */
+@media (min-width: $screen-tablet) {
+  .text-center-sm, .text-center-xs { text-align: center; }
+  .text-right-sm, .text-right-xs { text-align: right; }
+}
+
+/* Medium grid */
+@media (min-width: $screen-desktop) {
+  .text-center-md, .text-center-sm, .text-center-xs { text-align: center; }
+  .text-right-md, .text-right-sm, .text-right-xs { text-align: right; }
+}
+
+/* Large grid */
+@media (min-width: $screen-lg-desktop) {
+  .text-center-lg, .text-center-md, .text-center-sm, .text-center-xs {
+    text-align: center;
+  }
+  .text-right-lg, .text-right-md, .text-right-sm, .text-right-xs {
+    text-align: right;
   }
 }
