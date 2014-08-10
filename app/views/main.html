@@ -71,7 +71,9 @@
           </div>
         </div>
         <div class="col-sm-4 col-md-3 text-right-sm">
-          <p class="help-block">Hint: click a color to copy it</p>
+          <p class="help-block">
+            <em>Hint:</em> click a color to copy + select it
+          </p>
         </div>
       </div>
     </form>
@@ -89,6 +91,12 @@
                   &nbsp;
                 </a>
               </div>
+            </li>
+            <li>
+              <a class="clear-selected-colors-link" ng-click="selected_colors.length = 0" title="Clear selected" data-toggle="tooltip" data-placement="right">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Clear</span>
+              </a>
             </li>
           </ul>
         </div>
