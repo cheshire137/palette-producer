@@ -81,16 +81,16 @@ body {
   }
 }
 
-.ng-hide-remove {
-  -webkit-animation: fadeInDown 0.25s;
-  animation: fadeInDown 0.25s;
-}
+// .ng-hide-remove {
+//   -webkit-animation: fadeInDown 0.25s;
+//   animation: fadeInDown 0.25s;
+// }
 
-.ng-hide-add {
-  -webkit-animation: fadeOutUp 0.25s;
-  animation: fadeOutUp 0.25s;
-  display: block !important;
-}
+// .ng-hide-add {
+//   -webkit-animation: fadeOutUp 0.25s;
+//   animation: fadeOutUp 0.25s;
+//   display: block !important;
+// }
 
 .page-header {
   margin-top: 0;
@@ -125,20 +125,66 @@ body {
 .colors-list {
   margin-bottom: $line-height-computed;
 
+  // &.ng-hide-add {
+  //   -webkit-animation: fadeInUp 0.5s;
+  //   animation: fadeInUp 0.5s;
+  // }
+
+  // &.ng-hide-remove {
+  //   -webkit-animation: fadeOutDown 0.5s;
+  //   animation: fadeOutDown 0.5s;
+  //   display: block !important;
+  // }
+
   .color-link {
     display: inline-block;
     width: 50px;
     height: 50px;
     border-radius: 50px;
     margin: 5px;
+    text-decoration: none;
+
+    &.animate.ng-enter {
+      -webkit-animation: fadeIn 0.25s;
+      animation: fadeIn 0.25s;
+    }
+
+    &.animate.ng-leave {
+      -webkit-animation: fadeOut 0.25s;
+      animation: fadeOut 0.25s;
+    }
+
+    &:hover, &:focus {
+      -webkit-transform: scale(1.25);
+      -moz-transform: scale(1.25);
+      -ms-transform: scale(1.25);
+      -o-transform: scale(1.25);
+      transform: scale(1.25);
+    }
   }
 }
 
 .palette-list {
+  // &.ng-hide-add {
+  //   -webkit-animation: fadeInDown 0.5s;
+  //   animation: fadeInDown 0.5s;
+  // }
+
+  // &.ng-hide-remove {
+  //   -webkit-animation: fadeOutUp 0.5s;
+  //   animation: fadeOutUp 0.5s;
+  //   display: block !important;
+  // }
+
   .palette {
     &.animate.ng-enter {
-      -webkit-animation: fadeIn 0.25s;
-      animation: fadeIn 0.25s;
+      -webkit-animation: bounceInDown 0.5s;
+      animation: bounceInDown 0.5s;
+    }
+
+    &.animate.ng-leave {
+      -webkit-animation: fadeOut 0.25s;
+      animation: fadeOut 0.25s;
     }
 
     .color-list {
@@ -151,6 +197,16 @@ body {
         text-overflow: ellipsis;
         white-space: nowrap;
         display: block;
+
+        &.animate.ng-enter {
+          -webkit-animation: fadeIn 0.25s;
+          animation: fadeIn 0.25s;
+        }
+
+        &.animate.ng-leave {
+          -webkit-animation: fadeOut 0.25s;
+          animation: fadeOut 0.25s;
+        }
 
         .color-link {
           display: block;
@@ -253,6 +309,11 @@ body {
       .form-group {
         & + .form-group {
           margin-left: 20px;
+        }
+
+        &.generate-group {
+          border-right: 1px solid $hr-border;
+          padding-right: 20px;
         }
       }
     }

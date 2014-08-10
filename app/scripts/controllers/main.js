@@ -22,7 +22,18 @@ angular.module('paletteApp')
       copy_format: 'hex', generate: 'schemes', source_hue: 'red'
     };
     $scope.toggle = {copy_message: false};
-    $scope.palettes = [];
+    $scope.scheme_types = ['analogous', 'monochromatic', 'complementary',
+                           'split-complementary', 'double-complementary',
+                           'triadic'];
+    $scope.scheme_labels = {
+      'analogous': 'Analogous',
+      'monochromatic': 'Monochrome',
+      'complementary': 'Complement',
+      'split-complementary': 'Split Comp.',
+      'double-complementary': 'Double Comp.',
+      'triadic': 'Triadic'
+    };
+    $scope.schemes = [];
     $scope.colors = [];
 
     $scope.generate_palettes = function() {
@@ -34,32 +45,25 @@ angular.module('paletteApp')
     };
 
     $scope.make_colors = function() {
-      $scope.colors.length = 0;
-      var raw_colors = randomColor({count: 100, hue: $scope.options.source_hue,
+      var raw_colors = randomColor({count: 114, hue: $scope.options.source_hue,
                                     luminosity: $scope.options.luminosity,
                                     format: 'hex'});
+      var cur_num_colors = $scope.colors.length;
       for (var i=0; i<raw_colors.length; i++) {
-        $scope.colors.push(tinycolor(raw_colors[i]));
+        var color = tinycolor(raw_colors[i]);
+        if (i < cur_num_colors) {
+          $scope.colors[i] = color;
+        } else {
+          $scope.colors.push(color);
+        }
       }
-      console.log($scope.colors);
     };
 
     $scope.make_schemes = function() {
-      $scope.palettes.length = 0;
+      $scope.schemes.length = 0;
       var base_color = tinycolor($scope.options.source_color).toHsv();
-      var scheme_types = ['analogous', 'monochromatic', 'complementary',
-                          'split-complementary', 'double-complementary',
-                          'triadic'];
-      var labels = {
-        'analogous': 'Analogous',
-        'monochromatic': 'Monochrome',
-        'complementary': 'Complement',
-        'split-complementary': 'Split Comp.',
-        'double-complementary': 'Double Comp.',
-        'triadic': 'Triadic'
-      };
-      for (var i=0; i<scheme_types.length; i++) {
-        var scheme_type = scheme_types[i];
+      var make_scheme = function(i) {
+        var scheme_type = $scope.scheme_types[i];
         var colors = Please.make_scheme(base_color,
                                         {scheme_type: scheme_type,
                                          format: 'hex'});
@@ -69,10 +73,18 @@ angular.module('paletteApp')
           color_hex_list.push(colors[j].toHex());
         }
         color_hex_list = color_hex_list.join(',');
-        var palette = {colors: colors, scheme_type: scheme_type,
-                       label: labels[scheme_type],
-                       color_hex_list: color_hex_list};
-        $scope.palettes.push(palette);
+        return {colors: colors, scheme_type: scheme_type,
+                label: $scope.scheme_labels[scheme_type],
+                color_hex_list: color_hex_list};
+      };
+      var num_schemes = $scope.schemes.length;
+      for (var i=0; i<$scope.scheme_types.length; i++) {
+        var scheme = make_scheme(i);
+        if (i < num_schemes) {
+          $scope.schemes[i] = scheme;
+        } else {
+          $scope.schemes.push(scheme);
+        }
       }
     };
 
@@ -83,10 +95,6 @@ angular.module('paletteApp')
 
     $scope.$watch('options.source_color', function() {
       $scope.make_schemes();
-    });
-
-    $scope.$watch('options.generate', function() {
-      $scope.generate_palettes();
     });
 
     $scope.$watch('options.source_hue', function() {
