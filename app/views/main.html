@@ -3,26 +3,24 @@
 </p>
 
 <form ng-submit="make_palettes()" class="palette-generator-form form-inline">
-  <div class="row">
-    <div class="col-sm-2">
-      <button type="button" title="Randomize" data-toggle="tooltip" class="btn btn-default random-color-button" ng-click="randomize_source_color()">
-        <span class="glyphicon glyphicon-refresh"></span>
-      </button>
-    </div>
-    <div class="col-sm-5">
-      <label for="source_color" class="control-label">Seed color:</label>
-      <input id="source_color" class="form-control" type="text" placeholder="#ff00ff" ng-model="options.source_color" select-on-click>
-    </div>
-    <div class="col-sm-5">
-      <label for="copy_format" class="control-label">Format:</label>
-      <select ng-model="options.copy_format" id="copy_format" class="form-control">
-        <option value="rgb">rgb(255, 0, 0)</option>
-        <option value="hex">ff0000</option>
-        <option value="hsv">hsv(0, 100%, 100%)</option>
-        <option value="hex8">ffff0000</option>
-        <option value="rgb-pct">rgb(100%, 0%, 0%)</option>
-      </select>
-    </div>
+  <div class="form-group">
+    <button type="button" title="Randomize" data-toggle="tooltip" class="btn btn-default random-color-button" ng-click="randomize_source_color()">
+      <span class="glyphicon glyphicon-refresh"></span>
+    </button>
+  </div>
+  <div class="form-group">
+    <label for="source_color" class="control-label">Seed color:</label>
+    <input id="source_color" class="form-control" type="text" placeholder="#ff00ff" ng-model="options.source_color" select-on-click>
+  </div>
+  <div class="form-group">
+    <label for="copy_format" class="control-label">Format:</label>
+    <select ng-model="options.copy_format" id="copy_format" class="form-control">
+      <option value="rgb">rgb(255, 0, 0)</option>
+      <option value="hex">ff0000</option>
+      <option value="hsv">hsv(0, 100%, 100%)</option>
+      <option value="hex8">ffff0000</option>
+      <option value="rgb-pct">rgb(100%, 0%, 0%)</option>
+    </select>
   </div>
 </form>
 
