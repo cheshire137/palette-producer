@@ -44,6 +44,10 @@ angular.module('paletteApp')
       }
     };
 
+    $scope.$watch('options.source_color', function() {
+      $scope.make_palettes();
+    });
+
     $scope.get_color_list_height = function() {
       return ($(window).height() - $('.color-list').offset().top - $('.footer').outerHeight() - 20) + 'px';
     };
@@ -57,7 +61,6 @@ angular.module('paletteApp')
     $scope.randomize_source_color = function() {
       var color = tinycolor(Please.make_color());
       $scope.options.source_color = $scope.get_color_text(color);
-      $scope.make_palettes();
     };
 
     $scope.get_color_text = function(color) {
@@ -83,6 +86,4 @@ angular.module('paletteApp')
         $scope.toggle.copy_message = false;
       }, 1500);
     };
-
-    $scope.make_palettes();
   }]);

@@ -2,36 +2,26 @@
   Copied color to clipboard!
 </p>
 
-<form ng-submit="make_palettes()" class="palette-generator-form form-horizontal">
+<form ng-submit="make_palettes()" class="palette-generator-form form-inline">
   <div class="row">
-    <div class="col-sm-8">
-      <div class="form-group">
-        <div class="input-group">
-          <div class="input-group-btn">
-            <button type="button" title="Randomize" data-toggle="tooltip" class="btn btn-default random-color-button" ng-click="randomize_source_color()">
-              <span class="glyphicon glyphicon-refresh"></span>
-            </button>
-          </div>
-          <input class="form-control" type="text" placeholder="Base color, e.g., #ff00ff" ng-model="options.source_color" select-on-click>
-          <div class="input-group-btn">
-            <button type="submit" class="btn btn-default">Make Palettes</button>
-          </div>
-        </div>
-      </div>
+    <div class="col-sm-2">
+      <button type="button" title="Randomize" data-toggle="tooltip" class="btn btn-default random-color-button" ng-click="randomize_source_color()">
+        <span class="glyphicon glyphicon-refresh"></span>
+      </button>
     </div>
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label for="copy_format" class="control-label col-sm-4">Format:</label>
-        <div class="col-sm-8">
-          <select ng-model="options.copy_format" id="copy_format" class="form-control">
-            <option value="rgb">rgb(255, 0, 0)</option>
-            <option value="hex">ff0000</option>
-            <option value="hsv">hsv(0, 100%, 100%)</option>
-            <option value="hex8">ffff0000</option>
-            <option value="rgb-pct">rgb(100%, 0%, 0%)</option>
-          </select>
-        </div>
-      </div>
+    <div class="col-sm-5">
+      <label for="source_color" class="control-label">Seed color:</label>
+      <input id="source_color" class="form-control" type="text" placeholder="#ff00ff" ng-model="options.source_color" select-on-click>
+    </div>
+    <div class="col-sm-5">
+      <label for="copy_format" class="control-label">Format:</label>
+      <select ng-model="options.copy_format" id="copy_format" class="form-control">
+        <option value="rgb">rgb(255, 0, 0)</option>
+        <option value="hex">ff0000</option>
+        <option value="hsv">hsv(0, 100%, 100%)</option>
+        <option value="hex8">ffff0000</option>
+        <option value="rgb-pct">rgb(100%, 0%, 0%)</option>
+      </select>
     </div>
   </div>
 </form>
