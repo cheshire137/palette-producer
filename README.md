@@ -6,8 +6,9 @@ Makes use of Please JS to give you color palettes based off a source color.
 
 ## How to Develop
 
-You need [node.js and npm](http://nodejs.org/).
+You need [Ruby](https://www.ruby-lang.org/en/installation/) (I recommend [RubyInstaller](http://rubyinstaller.org/downloads/) and its DevKit for Windows), [RubyGems](https://rubygems.org/pages/download), [Bundler](http://bundler.io/), and [node.js and npm](http://nodejs.org/).
 
+1. `bundle`
 1. `npm install`
 1. `npm install -g bower`
 1. `bower install`
