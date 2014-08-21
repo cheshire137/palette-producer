@@ -10,10 +10,15 @@ Generate color palettes based on color schemes like complementary, triadic, and 
 
 You need [node.js and npm](http://nodejs.org/).
 
+### First Time
+
 1. `npm install`
 1. `npm install -g bower`
 1. `bower install`
 1. `npm install -g grunt-cli`
+
+### Every Time
+
 1. `grunt serve` to watch for front end file changes.
 
 ## How to Deploy to Heroku
