@@ -2,7 +2,7 @@
 
 Generate color palettes based on color schemes like complementary, triadic, and analogous. Easily copy generated colors in a variety of formats, including hex color codes and RGB strings.
 
-**[Visit on Heroku](http://palette-producer.herokuapp.com/)**
+**[View Demo](http://moneypenny.github.io/palette-producer/)**
 
 ![screenshot 1](https://raw.githubusercontent.com/moneypenny/palette-producer/master/screenshot.png)
 
