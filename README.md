@@ -23,7 +23,13 @@ You need [node.js and npm](http://nodejs.org/).
 
 1. `grunt serve` to watch for front end file changes.
 
-## How to Deploy to Heroku
+## How to Deploy
+
+### How to Deploy to Github Pages
+
+1. `./deploy.sh`
+
+### How to Deploy to Heroku
 
 1. `grunt build`
 1. `git remote add heroku git@heroku.com:yourherokuapp.git`
