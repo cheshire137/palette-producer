@@ -4,7 +4,7 @@
   "description": "Palette Producer",
   "repository": {
     "type": "git",
-    "url": "https://github.com/moneypenny/palette-producer.git"
+    "url": "https://github.com/cheshire137/palette-producer.git"
   },
   "dependencies": {
     "express": "^4.8.2",
