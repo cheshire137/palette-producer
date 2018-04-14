@@ -20,18 +20,9 @@ You need [node.js and npm](http://nodejs.org/).
 
 `grunt serve` to watch for front end file changes.
 
-## How to Deploy
-
-### How to Deploy to Github Pages
+## How to Deploy to Github Pages
 
     ./deploy.sh
-
-### How to Deploy to Heroku
-
-    grunt build
-    git remote add heroku git@heroku.com:yourherokuapp.git
-    git push heroku master
-    heroku ps:scale web=1
 
 ## Thanks
 
