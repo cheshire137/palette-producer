@@ -12,13 +12,8 @@ Generate color palettes based on color schemes like complementary, triadic, and 
 
 You need [node.js and npm](http://nodejs.org/).
 
-### First Time
-
     npm install
-
-### Every Time
-
-`grunt serve` to watch for front end file changes.
+    grunt serve
 
 ## How to Deploy to Github Pages
 
